@@ -1,6 +1,6 @@
 package Collections;
 
-public class COMP1110Student extends Student implements Comparable<COMP1110Student>{
+public class COMP1110Student extends Student implements Comparable<COMP1110Student>{//sort
     public static int numberOfStudents; // total number of enrolled students
 
     private int ass1;
@@ -52,8 +52,10 @@ public class COMP1110Student extends Student implements Comparable<COMP1110Stude
     }
 
     @Override
-    public int compareTo(COMP1110Student o) {
+    public int compareTo(COMP1110Student o) {//generate by intelleJ
         return this.getName().compareTo(o.getName());
     }
+
+
 
 }
