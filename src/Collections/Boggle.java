@@ -88,7 +88,8 @@ public class Boggle {static final String[] DICE = {"AJBBOO", "AFFPSK", "ANEAGE",
             boolean[] alreadyVisited = new boolean[DICE.length];
             alreadyVisited[start] = true;
             String prefix = String.valueOf(boggleCharacters[start]);
-            findWords(results, start, alreadyVisited, prefix);
+            findWords(results, start, alreadyVisited, prefix);//result 空数组，start 当前dice的位置(1-15),alreadyVisited 截至到当前dice
+            //的boolean array(当前dice以前包括当前的dice都已visited),prefix由当前dice位置的char是什么）
             for(var word: results){
                 System.out.println(word);
             }
