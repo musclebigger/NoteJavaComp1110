@@ -34,7 +34,8 @@ public class Boggle {static final String[] DICE = {"AJBBOO", "AFFPSK", "ANEAGE",
 
     static {//above function
         for (int i=0; i<DICE.length;i++){//16 total length
-            Set<Integer> neighbourOfI = new HashSet<>();
+            Set<Integer> neighbourOfI = new HashSet<>();//把当前的数字矩阵放进来neighbor列表中，比如5的矩阵就是0，1，2，4，6，8，10，
+            // 其中不包括本身，因为在外一层的列表中的顺序就是当前数字，由于不需要顺序所以使用set
             int x = i/4; // the number of row, 0,1,2,3 are row 1, 4,5,6,7 are row 2
             int y = i%4;// top of the square, like 5 the top neighbours are 0,1,2 and the 8%4=0, 9%4=1, 10%4=2
             for (int neighbourX = x-1; neighbourX<=x+1;neighbourX++){//the size of each small square's length is 3
@@ -52,7 +53,7 @@ public class Boggle {static final String[] DICE = {"AJBBOO", "AFFPSK", "ANEAGE",
             //System.out.println("Neighbour of "+ i); //this is for checking the function
             //for(var neighbour: neighbourOfI){
                 //System.out.println(neighbour);
-            neighbours.add(neighbourOfI);
+            neighbours.add(neighbourOfI);//每个当前数字
         }
     }
 
@@ -71,12 +72,13 @@ public class Boggle {static final String[] DICE = {"AJBBOO", "AFFPSK", "ANEAGE",
      */
     public static void main(String[] args) { Boggle boggle = new Boggle();
     //generate random chars
+
         boggle.solve();
     }
 
     /**
      * 1. Start at a particular die
-     * 2. for each neighbour die
+     * 2. for each neighbour die，在static里我们已经将matrix of each die 放入了neighborList<Set> 的constructor中
      * 3. move to neighbour - check whether already visited
      */
     void solve(){
@@ -114,7 +116,7 @@ public class Boggle {static final String[] DICE = {"AJBBOO", "AFFPSK", "ANEAGE",
     Set<String> processDictionary(String filename){//method to create the dictionary to the hashset
         Set<String> words = new HashSet<>();
         try{//if there have a file in the rout
-            Scanner s = new Scanner(new File(filename));//input the file of dictionary in the asset
+            Scanner s = new Scanner(new File(filename));//input the file of dictionary in the asset，需要handle exception通过try
             while(s.hasNext()){
                 String word = s.next().toUpperCase();
                 words.add(word);
